@@ -261,9 +261,9 @@ class ContentState extends ContentStateRecord {
 
   static createFromText(
     text: string,
-    delimiter: string | RegExp = /\r\n?|\n/g,
+    delimiter: null | string | RegExp = /\r\n?|\n/g,
   ): ContentState {
-    const strings = text.split(delimiter);
+    const strings = text.split(delimiter ?? undefined);
     const blocks = strings.map(block => {
       block = sanitizeDraftText(block);
       return new ContentBlockNodeRecord({
